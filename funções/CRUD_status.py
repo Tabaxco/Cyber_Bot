@@ -59,20 +59,20 @@ def update_status(discord_id = None, atributo = None, valor = None):
 
     atributo_escolhido = None
 
-    atributos_validos = [
-    "nome",
-    "especializacao",
-    "nivel",
-    "hp",
-    "cp",
-    "forca",
-    "destreza",
-    "constituicao",
-    "inteligencia",
-    "sabedoria",
-    "carisma",
-    "aparencia"
-    ]
+    atributos_validos = {
+    "nome" : "Nome",
+    "especializacao" : "Especialização",
+    "nivel": "Nível",
+    "hp" : "Hit Points",
+    "cp" : "Chakra Points",
+    "forca" : "Força",
+    "destreza" : "Destreza",
+    "constituicao" : "Constituição",
+    "inteligencia" : "Inteligência",
+    "sabedoria" : "Sabedoria",
+    "carisma" : "Carisma",
+    "aparencia" : "Aparência"
+    }
 
     if atributo not in atributos_validos:
         return f'{atributo.capitalize()} é um dado inválido.'
@@ -86,31 +86,7 @@ def update_status(discord_id = None, atributo = None, valor = None):
     conexao.commit()
     conexao.close()
     
-    if atributo == 'nome':
-        atributo_escolhido = atributo.capitalize()
-    elif atributo == 'especializacao':
-        atributo_escolhido = 'Especialização'
-    elif atributo == 'nivel':
-        atributo_escolhido = 'Nível'
-    elif atributo == 'hp':
-        atributo_escolhido = 'Hit Points'
-    elif atributo == 'cp':
-        atributo_escolhido = 'Chakra Points'
-    elif atributo == 'forca':
-        atributo_escolhido = 'Força'
-    elif atributo == 'destreza':
-        atributo_escolhido = 'Destreza'
-    elif atributo == 'constituicao':
-        atributo_escolhido = 'Constituição'
-    elif atributo == 'inteligencia':
-        atributo_escolhido = 'Inteligência'
-    elif atributo == 'sabedoria':
-        atributo_escolhido = 'Sabedoria'
-    elif atributo == 'carisma':
-        atributo_escolhido = 'Carisma'
-    else:
-        atributo_escolhido = 'Aparência'
-
+    atributo_escolhido = atributos_validos[atributo]
     return f"{atributo_escolhido} atualizado com sucesso para {valor}."
 
 

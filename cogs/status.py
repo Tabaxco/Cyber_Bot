@@ -60,13 +60,21 @@ class Status(commands.Cog):
                 color=discord.Color.purple()
             )
 
-            embed.add_field(name="Especialização", value=dados_status[2], inline=True)
-            embed.add_field(name="Nível", value=dados_status[3], inline=True)
-            embed.add_field(name="", value="", inline=True)
-
-            embed.add_field(name="Hit Points", value=dados_status[4], inline=True)
-            embed.add_field(name="Chakra Points", value=dados_status[5], inline=True)
-            embed.add_field(name="", value="", inline=True)
+            campos = [ 
+                ("Especialização", dados_status[2]),
+                ("Nível", dados_status[3]),
+                ("", ""),
+                ("Hit Points", dados_status[4]),
+                ("Chakra Points", dados_status[5]),
+                ("", "") ]
+                
+            
+            for campo, valor in campos:
+                embed.add_field(
+                    name=f"{campo}",
+                    value=f"{valor}",
+                    inline= True 
+                )
 
             atributos = [
                 ("Força", dados_status[6], dumbell),
