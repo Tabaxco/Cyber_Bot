@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from funções import CRUD_status
+import asyncio
 
 class Status(commands.Cog):
     def __init__(self, bot):
@@ -28,16 +29,18 @@ class Status(commands.Cog):
         ]
 
         respostas = {}
+
         for pergunta, chave in perguntas:
             await ctx.send(pergunta)
             resposta = await self.bot.wait_for('message', check=check)
             respostas[chave] = resposta.content
 
-        resultado = CRUD_status.create_status(
-            respostas['nome'], respostas['espe'], respostas['lvl'], respostas['hp'], respostas['cp'],
-            respostas['forc'], respostas['dex'], respostas['con'], respostas['inte'],
-            respostas['sab'], respostas['car'], ctx.author.id
-        )
+            resultado = CRUD_status.create_status(
+                    respostas['nome'], respostas['espe'], respostas['lvl'], respostas['hp'], respostas['cp'],
+                    respostas['forc'], respostas['dex'], respostas['con'], respostas['inte'],
+                    respostas['sab'], respostas['car'], ctx.author.id
+                )
+        
         await ctx.send(resultado)
 
 
@@ -119,71 +122,3 @@ class Status(commands.Cog):
     async def update_status(self, ctx, atributo: str = None, valor=None):
         uptade_status = CRUD_status.update_status(discord_id=ctx.author.id, atributo=atributo, valor=valor)
         await ctx.send(uptade_status)
-
-
-
-#Pericias
-    @commands.command()
-    async def pericias(self, ctx):
-    # Estrutura: atributo base -> {pericia: valor}
-        pericias_jogador = {
-            "Força": {
-                "Atletismo": 4,
-                "Taijutsu": 3,
-                "Pontaria" : 3
-            },
-            "Destreza": {
-                "Acrobacia": 5,
-                "Furtividade": 3,
-                "Pontaria" : 3,
-                "Prestidigitação" : 3,
-                "Reflexos" : 3,
-                "Taijutsu" : 3
-            },
-            "Sabedoria": {
-                "Intuição": 2,
-                "Medicina": 4,
-                "Percepção" : 3,
-                "Ocultismo" : 3,
-                "Sobrevivência" : 3,
-                "Vontade" : 3
-            },
-            "Inteligência": {
-                "Astúcia": 3,
-                "Ninjutsu": 2,
-                "Investigação" : 3,
-                "História" : 3
-            },
-            "Carisma" : {
-                "Persuasão" : 3,
-                "Enganação" : 3,
-                "Intimidação" : 3,
-                "Genjutsu" : 3
-            }
-        }
-
-        emojis_atributos = {
-        "Força": "💪",
-        "Destreza": "🤸",
-        "Sabedoria": "🧠",
-        "Inteligência": "📚",
-        "Carisma": "🎭"
-    }
-
-        embed = discord.Embed(
-            title=f"📜 Perícias de {ctx.author.display_name}",
-            color=discord.Color.green()
-        )
-
-        # Loop pelos atributos
-        for atributo, pericias in pericias_jogador.items():
-            valor_texto = ""
-            for nome, valor in pericias.items():
-                valor_texto += f"{nome}: + {valor}\n"
-
-            # Adiciona emoji do atributo no nome do field
-            emoji_atributo = emojis_atributos.get(atributo, "")
-            embed.add_field(name=f"{emoji_atributo} {atributo}", value=valor_texto, inline=False)
-            embed.add_field(name=f'', value = '', inline = False )
-
-        await ctx.send(embed=embed)

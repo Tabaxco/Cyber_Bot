@@ -16,9 +16,12 @@ class MeuBot(commands.Bot):
         # Carrega os módulos (cogs)
         from cogs.status import Status
         await self.add_cog(Status(self))
-    
+
+        from cogs.pericias import Pericias 
+        await self.add_cog(Pericias(self))
+        
     async def on_ready(self):
-        print(f'✅ Conectado com sucesso como {self.user}')
+        print(f'Conectado com sucesso como {self.user}')
         
 
 bot = MeuBot()
