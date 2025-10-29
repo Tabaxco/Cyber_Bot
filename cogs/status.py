@@ -13,35 +13,44 @@ class Status(commands.Cog):
     async def criar_status(self, ctx):
         def check(m):
             return m.author == ctx.author and m.channel == ctx.channel
+        while True:
+            try:
+                 
+                perguntas = [
+                    ('Qual o nome do personagem?', 'nome'),
+                    ('Qual a especialização do personagem?', 'espe'),
+                    ('Qual o nível do personagem?', 'lvl'),
+                    ('Quanto de HP o personagem possui?', 'hp'),
+                    ('Quanto de CP o personagem possui? (Chakra Points)', 'cp'),
+                    ('Quanto de Força o personagem tem?', 'forc'),
+                    ('Quanto de Destreza o personagem tem?', 'dex'),
+                    ('Quanto de Constituição o personagem tem?', 'con'),
+                    ('Quanto de inteligência o personagem tem?', 'inte'),
+                    ('Quanto de sabedoria o personagem tem?', 'sab'),
+                    ('Quanto de carisma o personagem tem?', 'car')
+                ]
 
-        perguntas = [
-            ('Qual o nome do personagem?', 'nome'),
-            ('Qual a especialização do personagem?', 'espe'),
-            ('Qual o nível do personagem?', 'lvl'),
-            ('Quanto de HP o personagem possui?', 'hp'),
-            ('Quanto de CP o personagem possui? (Chakra Points)', 'cp'),
-            ('Quanto de Força o personagem tem?', 'forc'),
-            ('Quanto de Destreza o personagem tem?', 'dex'),
-            ('Quanto de Constituição o personagem tem?', 'con'),
-            ('Quanto de inteligência o personagem tem?', 'inte'),
-            ('Quanto de sabedoria o personagem tem?', 'sab'),
-            ('Quanto de carisma o personagem tem?', 'car')
-        ]
+                respostas = {}
 
-        respostas = {}
+                for pergunta, chave in perguntas:
+                    await ctx.send(pergunta)
+                    resposta = await self.bot.wait_for('message', check=check)
+                    respostas[chave] = resposta.content
+                    print(f"{resposta.content}")
 
-        for pergunta, chave in perguntas:
-            await ctx.send(pergunta)
-            resposta = await self.bot.wait_for('message', check=check)
-            respostas[chave] = resposta.content
-
-            resultado = CRUD_status.create_status(
-                    respostas['nome'], respostas['espe'], respostas['lvl'], respostas['hp'], respostas['cp'],
-                    respostas['forc'], respostas['dex'], respostas['con'], respostas['inte'],
-                    respostas['sab'], respostas['car'], ctx.author.id
-                )
         
-        await ctx.send(resultado)
+                resultado = CRUD_status.create_status(
+                        respostas['nome'], respostas['espe'], respostas['lvl'], respostas['hp'], respostas['cp'],
+                        respostas['forc'], respostas['dex'], respostas['con'], respostas['inte'],
+                        respostas['sab'], respostas['car'], ctx.author.id
+                    )
+                await ctx.send(resultado)
+                break
+
+            except Exception as e:
+                await ctx.send(f"Ocorreu um erro inesperado. Vamos tentar novamente!")
+                
+
 
 
 

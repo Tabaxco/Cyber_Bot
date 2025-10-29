@@ -13,7 +13,7 @@ class MeuBot(commands.Bot):
         super().__init__(command_prefix='$', intents=intents)
 
     async def setup_hook(self):
-        # Carrega os módulos (cogs)
+        
         from cogs.status import Status
         await self.add_cog(Status(self))
 
