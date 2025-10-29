@@ -14,8 +14,8 @@ class Status(commands.Cog):
         def check(m):
             return m.author == ctx.author and m.channel == ctx.channel
         while True:
+
             try:
-                 
                 perguntas = [
                     ('Qual o nome do personagem?', 'nome'),
                     ('Qual a especialização do personagem?', 'espe'),

@@ -87,7 +87,7 @@ def update_status(discord_id = None, atributo = None, valor = None):
     conexao.close()
     
     atributo_escolhido = atributos_validos[atributo]
-    return f"{atributo_escolhido} atualizado com sucesso para {valor}."
+    return f"{atributo_escolhido} atualizado com sucesso para {valor}"
 
 
 
