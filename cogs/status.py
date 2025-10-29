@@ -13,10 +13,9 @@ class Status(commands.Cog):
     async def criar_status(self, ctx):
         def check(m):
             return m.author == ctx.author and m.channel == ctx.channel
-        while True:
 
-            try:
-                perguntas = [
+        try:
+            perguntas = [
                     ('Qual o nome do personagem?', 'nome'),
                     ('Qual a especialização do personagem?', 'espe'),
                     ('Qual o nível do personagem?', 'lvl'),
@@ -30,25 +29,26 @@ class Status(commands.Cog):
                     ('Quanto de carisma o personagem tem?', 'car')
                 ]
 
-                respostas = {}
+            respostas = {}
 
-                for pergunta, chave in perguntas:
+            for pergunta, chave in perguntas:
                     await ctx.send(pergunta)
                     resposta = await self.bot.wait_for('message', check=check)
                     respostas[chave] = resposta.content
                     print(f"{resposta.content}")
 
         
-                resultado = CRUD_status.create_status(
+            resultado = CRUD_status.create_status(
                         respostas['nome'], respostas['espe'], respostas['lvl'], respostas['hp'], respostas['cp'],
                         respostas['forc'], respostas['dex'], respostas['con'], respostas['inte'],
                         respostas['sab'], respostas['car'], ctx.author.id
                     )
-                await ctx.send(resultado)
-                break
+            await ctx.send(resultado)
 
-            except Exception as e:
-                await ctx.send(f"Ocorreu um erro inesperado. Vamos tentar novamente!")
+
+        except Exception as e:
+                await ctx.send(f"Ocorreu um erro inesperado.")
+                print(e)
                 
 
 
@@ -121,13 +121,21 @@ class Status(commands.Cog):
 # Deletar Status
     @commands.command()
     async def del_status(self, ctx, nome: str = None):
-        resultado = CRUD_status.del_status(nome=nome, discord_id=ctx.author.id)
-        await ctx.send(resultado)
+        try:
+            resultado = CRUD_status.del_status(nome=nome, discord_id=ctx.author.id)
+            await ctx.send(resultado)
+        except Exception as e:
+             await ctx.send("Ocorreu um erro inesperado.")
+             print(e)
 
 
 
 #Atualizar Status
     @commands.command()
     async def update_status(self, ctx, atributo: str = None, valor=None):
-        uptade_status = CRUD_status.update_status(discord_id=ctx.author.id, atributo=atributo, valor=valor)
-        await ctx.send(uptade_status)
+        try:
+            uptade_status = CRUD_status.update_status(discord_id=ctx.author.id, atributo=atributo, valor=valor)
+            await ctx.send(uptade_status)
+        except Exception as e:
+             await ctx.send("Ocorreu um erro inesperado.")
+             print(e)

@@ -13,18 +13,22 @@ def create_status(nome, especializacao, nivel, hp, cp, forc, dex, con, inte, sab
         cursor = conexao.cursor()
 
         cursor.execute('''
-            INSERT INTO status (nome, especializacao, nivel, hp, cp, forca, destreza, constituicao, inteligencia,
+            INSERT INTO status (nome, especializacao, nivel, 
+                       hp, cp, forca, destreza, 
+                        constituicao, inteligencia,
                         sabedoria, carisma, discord_id)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (nome, especializacao, nivel, hp, cp, forc, dex, con, inte, sab, car, discord_id))
 
         conexao.commit()
-        conexao.close()
+        return f'Status de {nome} criado com sucesso!'
 
     except Exception as e:
         return f'Ocorreu um erro ao criar o status: {e}'
-    else:
-        return f'Status de {nome} criado com sucesso!'
+    
+    
+    finally:
+        conexao.close()
 
 
 
