@@ -20,6 +20,9 @@ class MeuBot(commands.Bot):
         from cogs.pericias import Pericias 
         await self.add_cog(Pericias(self))
         
+        from cogs.rolagem import Rolagem
+        await self.add_cog(Rolagem(self))
+        
     async def on_ready(self):
         print(f'Conectado com sucesso como {self.user}')
         

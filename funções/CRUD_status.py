@@ -31,10 +31,6 @@ def create_status(nome, especializacao, nivel, hp, cp, forc, dex, con, inte, sab
         conexao.close()
 
 
-
-
-
-
 def status(nome = None, discord_id = None):
     '''Mostra os status com as informações de atirbutos do personagem'''
 
@@ -51,11 +47,6 @@ def status(nome = None, discord_id = None):
     status = cursor.fetchone()
     conexao.close()
     return status
-
-
-
-
-
 
 
 def update_status(discord_id = None, atributo = None, valor = None):
@@ -94,13 +85,6 @@ def update_status(discord_id = None, atributo = None, valor = None):
     return f"{atributo_escolhido} atualizado com sucesso para {valor}"
 
 
-
-
-
-
-
-
-
 def del_status(nome = None, discord_id = None):
     '''Deleta os status do personagem.'''
 
@@ -117,12 +101,6 @@ def del_status(nome = None, discord_id = None):
     conexao.commit()
     conexao.close()
     return 'Status deletado com sucesso.'
-
-
-
-
-
-
 
 
 def checar_rank (valor):
