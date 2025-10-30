@@ -32,7 +32,7 @@ class Status(commands.Cog):
             respostas = {}
 
             for pergunta, chave in perguntas:
-                    await ctx.send(pergunta, reference=ctx.author, mention_author=True)
+                    await ctx.send(pergunta, reference=ctx.message, mention_author=True)
                     resposta = await self.bot.wait_for('message', check=check)
                     respostas[chave] = resposta.content
                     print(f"{resposta.content}")
@@ -110,7 +110,7 @@ class Status(commands.Cog):
                 embed.set_image(url=dados_status[13])
             embed.set_footer(text=media)
 
-            await ctx.send(embed=embed, references=ctx.author, mention_author=True)
+            await ctx.send(embed=embed, reference=ctx.message, mention_author=True)
         else:
             await ctx.send("❌ Nenhum status encontrado!")
 
@@ -123,9 +123,9 @@ class Status(commands.Cog):
     async def del_status(self, ctx, nome: str = None):
         try:
             resultado = CRUD_status.del_status(nome=nome, discord_id=ctx.author.id)
-            await ctx.send(resultado, refences=ctx.author, mention_author=True)
+            await ctx.send(resultado, refences=ctx.message, mention_author=True)
         except Exception as e:
-             await ctx.send("Ocorreu um erro inesperado.", refences=ctx.author, mention_author=True)
+             await ctx.send("Ocorreu um erro inesperado.", refence=ctx.message, mention_author=True)
              print(e)
 
 
@@ -137,5 +137,5 @@ class Status(commands.Cog):
             uptade_status = CRUD_status.update_status(discord_id=ctx.author.id, atributo=atributo, valor=valor)
             await ctx.send(uptade_status)
         except Exception as e:
-             await ctx.send("Ocorreu um erro inesperado.", refences=ctx.author, mention_author=True)
+             await ctx.send("Ocorreu um erro inesperado.", refence=ctx.message, mention_author=True)
              print(e)
