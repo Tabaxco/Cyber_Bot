@@ -112,7 +112,7 @@ class Status(commands.Cog):
 
             await ctx.send(embed=embed, reference=ctx.message, mention_author=True)
         else:
-            await ctx.send("❌ Nenhum status encontrado!")
+            await ctx.send("❌ Nenhum status encontrado!", reference=ctx.message, mention_author=True)
 
 
 
