@@ -137,5 +137,5 @@ class Status(commands.Cog):
             uptade_status = CRUD_status.update_status(discord_id=ctx.author.id, atributo=atributo, valor=valor)
             await ctx.send(uptade_status)
         except Exception as e:
-             await ctx.send("Ocorreu um erro inesperado.", refence=ctx.message, mention_author=True)
+             await ctx.send("Ocorreu um erro inesperado.", reference=ctx.message, mention_author=True)
              print(e)

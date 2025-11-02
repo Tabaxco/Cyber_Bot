@@ -69,7 +69,7 @@ def update_status(discord_id = None, atributo = None, valor = None):
     "aparencia" : "Aparência"
     }
 
-    if atributo not in atributos_validos:
+    if atributo.lower() not in atributos_validos:
         return f'{atributo.capitalize()} é um dado inválido.'
     
     conexao = conectar()
