@@ -3,6 +3,7 @@ from discord.ext import commands
 from funções import CRUD_status
 import asyncio
 
+
 class Status(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -32,7 +33,9 @@ class Status(commands.Cog):
             respostas = {}
 
             for pergunta, chave in perguntas:
-                    await ctx.send(pergunta, reference=ctx.message, mention_author=True)
+                    await ctx.send(pergunta, 
+                                   reference=ctx.message, 
+                                   mention_author=True)
                     resposta = await self.bot.wait_for('message', check=check)
                     respostas[chave] = resposta.content
                     print(f"{resposta.content}")
@@ -50,13 +53,7 @@ class Status(commands.Cog):
                 await ctx.send(f"Ocorreu um erro inesperado.")
                 print(e)
                 
-
-
-
-
-
-
-        
+ 
     # ver status
     @commands.command()
     async def status(self, ctx, nome: str = None):
@@ -110,12 +107,13 @@ class Status(commands.Cog):
                 embed.set_image(url=dados_status[13])
             embed.set_footer(text=media)
 
-            await ctx.send(embed=embed, reference=ctx.message, mention_author=True)
+            await ctx.send(embed=embed, 
+                           reference=ctx.message, 
+                           mention_author=True)
         else:
-            await ctx.send("❌ Nenhum status encontrado!", reference=ctx.message, mention_author=True)
-
-
-
+            await ctx.send("❌ Nenhum status encontrado!", 
+                           reference=ctx.message, 
+                           mention_author=True)
 
 
 # Deletar Status
@@ -125,9 +123,10 @@ class Status(commands.Cog):
             resultado = CRUD_status.del_status(nome=nome, discord_id=ctx.author.id)
             await ctx.send(resultado, refences=ctx.message, mention_author=True)
         except Exception as e:
-             await ctx.send("Ocorreu um erro inesperado.", refence=ctx.message, mention_author=True)
+             await ctx.send("Ocorreu um erro inesperado.", 
+                            reference=ctx.message, 
+                            mention_author=True)
              print(e)
-
 
 
 #Atualizar Status
@@ -137,5 +136,7 @@ class Status(commands.Cog):
             uptade_status = CRUD_status.update_status(discord_id=ctx.author.id, atributo=atributo, valor=valor)
             await ctx.send(uptade_status)
         except Exception as e:
-             await ctx.send("Ocorreu um erro inesperado.", reference=ctx.message, mention_author=True)
+             await ctx.send("Ocorreu um erro inesperado.", 
+                            reference=ctx.message, 
+                            mention_author=True)
              print(e)

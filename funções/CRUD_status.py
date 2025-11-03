@@ -36,7 +36,7 @@ def status(nome = None, discord_id = None):
 
     conexao = conectar()
     cursor = conexao.cursor()
-
+    
     if nome:
         cursor.execute("SELECT * FROM status WHERE nome = ?", (nome,))
     elif discord_id:

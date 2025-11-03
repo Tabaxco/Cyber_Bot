@@ -3,9 +3,11 @@ from discord.ext import commands
 from funções import CRUD_pericias
 import asyncio
 
+
 class Pericias(commands.Cog):
     def __init__ (self, bot):
         self.bot = bot
+
 
     @commands.command()
     async def criar_pericias(self, ctx):

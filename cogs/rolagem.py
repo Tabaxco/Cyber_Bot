@@ -6,7 +6,8 @@ import random
 class Rolagem(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
+
+   
     @commands.command()
     async def roll(self, ctx, *, entrada: str = "1d20"):
         partes = entrada.lower().split("d")
