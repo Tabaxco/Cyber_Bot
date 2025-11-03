@@ -16,10 +16,10 @@ class Gerais(commands.Cog):
         embed.add_field(
             name='Status',
             value=(
-                "**criar_status** - *Cria o status do personagem*\n"
-                "**status** - *Busca o status atual do personagem*\n"
-                "**del_status** - *Deleta o status do personagem*\n"
-                "**update_status** - *Atualiza o valor de algum atributo do personagem*\n"
+                "**$criar_status** - *Cria o status do personagem*\n"
+                "**$status** - *Busca o status atual do personagem*\n"
+                "**$del_status** - *Deleta o status do personagem*\n"
+                "**$update_status** - *Atualiza o valor de algum atributo do personagem*\n"
             ),
             inline = False
         )
@@ -27,7 +27,7 @@ class Gerais(commands.Cog):
         embed.add_field(
             name="Rolagem de Dados",
             value=(
-                "**roll** - *Rola os dados*"
+                "**$roll** - *Rola os dados*"
             ),
             inline = False
         )

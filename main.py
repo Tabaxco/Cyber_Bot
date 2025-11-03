@@ -31,11 +31,13 @@ class MeuBot(commands.Bot):
         
     async def on_ready(self):
         print(f'Conectado com sucesso como {self.user}')
-        mensagens = cycle(["Ensinando a Agatha", "Entrando no Shadowverse",
-                           "Estourando os balões do Chico"])
+        mensagens = cycle(["Ensinando a Agatha", "Entrando no Shadowverse", "Batendo no Romeu",
+                           "Estourando os balões do Chico", "Consertando as marionetes do Colt",
+                           "Caçando a foice do Kanki", "Testando o QI do Sendo", "Desejando ser o top 1",
+                           "Lamentando a morte da Seigi", "Zoando o Shidan", "Copiando o Nekota"])
         while True:
             await bot.change_presence(activity=discord.Game(next(mensagens)))
-            await asyncio.sleep(20)
+            await asyncio.sleep(60)
 
 bot = MeuBot()
 bot.run(TOKEN)
