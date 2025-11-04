@@ -36,8 +36,8 @@ class Status(commands.Cog):
                     await ctx.send(pergunta, 
                                    reference=ctx.message, 
                                    mention_author=True)
-                    resposta = await self.bot.wait_for('message', check=check)
-                    respostas[chave] = resposta.content
+                    resposta = await self.bot.wait_for('message', check=check, timeout = 60)
+                    respostas[chave] = resposta.content.strip()
                     print(f"{resposta.content}")
 
         
@@ -48,7 +48,8 @@ class Status(commands.Cog):
                     )
             await ctx.send(resultado)
 
-
+        except asyncio.TimeoutError:
+             await ctx.send(f"{ctx.author.mention}demorou muito para responder ⏰")
         except Exception as e:
                 await ctx.send(f"Ocorreu um erro inesperado.")
                 print(e)
