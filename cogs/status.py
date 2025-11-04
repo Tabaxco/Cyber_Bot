@@ -49,7 +49,7 @@ class Status(commands.Cog):
             await ctx.send(resultado)
 
         except asyncio.TimeoutError:
-             await ctx.send(f"{ctx.author.mention}demorou muito para responder ⏰")
+             await ctx.send(f"{ctx.author.mention} demorou muito para responder ⏰")
         except Exception as e:
                 await ctx.send(f"Ocorreu um erro inesperado.")
                 print(e)
