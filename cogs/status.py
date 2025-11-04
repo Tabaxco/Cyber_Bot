@@ -122,7 +122,7 @@ class Status(commands.Cog):
     async def del_status(self, ctx, nome: str = None):
         try:
             resultado = CRUD_status.del_status(nome=nome, discord_id=ctx.author.id)
-            await ctx.send(resultado, refences=ctx.message, mention_author=True)
+            await ctx.send(resultado, reference=ctx.message, mention_author=True)
         except Exception as e:
              await ctx.send("Ocorreu um erro inesperado.", 
                             reference=ctx.message, 
