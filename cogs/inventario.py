@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from funções import CRUD_inventario
 
 class Inventario(commands.Cog):
     def __init__(self, bot):
@@ -15,4 +16,4 @@ class Inventario(commands.Cog):
         
         @commands.command()
         async def inv(self, ctx):
-            ...
+            dados = CRUD_inventario.ver_inv(ctx.author.id)

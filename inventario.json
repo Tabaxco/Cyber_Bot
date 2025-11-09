@@ -1,0 +1,33 @@
+{
+
+    "422909140977975296" : {
+        "personagens": {
+            "Sendo" : {
+                "inventario" : [
+                    {"nome" : "Katana",
+                    "desc" : "Katana comprada por Sendo durante o pequeno Time-Skip", 
+                    "tipo" : "Katana", 
+                    "dano" : "1d6/1d8", 
+                    "critico" : 19, 
+                    "propriedades" : "Versátil, fatal d10, fineza",
+                    "encantamentos" : "Nenhum",
+                    "espaços": 1,
+                    "custo" : 1,
+                    "quantidade" : 2},
+
+                    {"nome" : "Lâmina Decomposta",
+                    "desc" : "Uma lâmina em estado terrível comprada por Sendo durante o mês que passou sem atuar como ninja. O comprador o convenceu de que ela pertenceu há um grande guerreiro antigo, mesmo que hoje ela esteja em um estado deplorável. Sendo sentiu que devia comprar tal espada.",
+                    "tipo" : "Katana",
+                    "dano" : "1d6/1d8", 
+                    "critico" : 19, 
+                    "propriedades" : "Versátil, fatal d10, fineza",
+                    "encantamentos" : "Precisa",
+                    "espaços": 1,
+                    "custo" : 1,
+                    "quantidade" : 1}
+                ]
+            }
+        }
+    }
+
+}
