@@ -10,3 +10,8 @@ A Discord bot created to facilitate access to player character information durin
 
 - 📌 Display key character information.
 - 🔍 Quick queries within the server.
+
+## 🌙 Future Features
+
+- 🐬 MySQL Integration.
+- 📖 Characters will only be available in the servers they were created.
