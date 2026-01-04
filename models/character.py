@@ -8,7 +8,7 @@ class Character():
 
         #attributes
         self.str = str
-        self. dex = dex
+        self.dex = dex
         self.con = con
         self.int = int
         self.wis = wis
