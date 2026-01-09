@@ -1,21 +1,48 @@
 from random import randint
 
-def rolling(quantity: int = 1, faces: int = 20, operator = None, modifier = None):
-    result = []
+def rolling(input="1d20"):
+        result = []
+        operators = ["+", "-" , "*", "/"]
+        optor = None
+        bonus = None
 
-    for q in range(quantity):
-        result.append(randint(1, faces))
+        quantity, facesoperatorandmodifier = input.lower().split("d")
+        quantity = int(quantity)
 
-    sumresult = sum(result)
+        for operator in operators:
+               if operator in facesoperatorandmodifier:
+                    optor = operator
+                    faces, modifier = facesoperatorandmodifier.split(optor)
+                    faces = int(faces)
+                    modifier = int(modifier)
+                    break
 
-    message = f'{sumresult} ⟵ {result} {quantity}d{faces}'
+        if optor is None:
+               faces = int(facesoperatorandmodifier)
 
-    if operator and modifier:
-        if operator == '+':
-            sumresult += modifier
-            message += f' {operator} {modifier}'
-        elif operator == '-':
-            sumresult -= modifier
-            message += f' {operator} {modifier}'
+        if faces < 1:
+               raise ValueError("As faces devem ser maior ou igual a 1!")
+ 
+        
+        for q in range(quantity):
+            result.append(randint(1, faces))
+        
+        sumresult = sum(result)
 
-    return(f'{message}')
+        if optor:
+          if optor == "+":
+               sumresult += modifier
+          elif optor == "-":
+               bonus = modifier
+          elif optor == "*":
+               sumresult *= modifier
+          elif optor == "/":
+               sumresult //= modifier
+          else:
+               bonus = ""
+          bonus = f" {optor} {modifier}"
+        
+        message = f'` {sumresult} ` ⟵ {result} {quantity}d{faces}'
+        message += bonus if bonus else ""
+
+        return message
