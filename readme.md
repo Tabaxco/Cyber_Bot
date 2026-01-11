@@ -6,7 +6,7 @@ A Discord bot created to facilitate my players access to their character's infor
 
 ---
 ## 🎁 Features
-- Dice rolling system.
+- 🎲 Dice rolling system.
 
 ## 🚀 New Features (0.2V)
 Cyber Bot is currently on it's 0.2 version. Right now I'm improving it. I'm always studying and learning, so I can code a bot that can offer a better experience for my players.
