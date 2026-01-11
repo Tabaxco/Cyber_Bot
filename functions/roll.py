@@ -2,7 +2,7 @@ from random import randint
 
 def rolling(input="1d20"):
         result = []
-        operators = ["+", "-" , "*", "/"]
+        operators = ["+", "-" , "x", "/"]
         optor = None
         bonus = None
 
@@ -34,7 +34,7 @@ def rolling(input="1d20"):
                sumresult += modifier
           elif optor == "-":
                bonus = modifier
-          elif optor == "*":
+          elif optor == "x":
                sumresult *= modifier
           elif optor == "/":
                sumresult //= modifier

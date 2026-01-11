@@ -1,9 +1,8 @@
-class Character():
+class Nto_Character():
     def __init__(self, name, clan, age, str, dex, con, int, wis, char):
 
         #characteristics
         self.name = name
-        self.clan = clan
         self.age = age
 
         #attributes
