@@ -1,4 +1,4 @@
-class Cyberpunk_Character():
+class CyberpunkCharacter():
     def __init__(self, id_user, id_server, name, age, role, inte, will, cool, emp, tech, ref, luck, body, dex, move, apperance):
         self.id_user = id_user
         self.id_server = id_server

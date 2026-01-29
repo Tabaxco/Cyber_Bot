@@ -1,15 +1,28 @@
-class Nto_Character():
-    def __init__(self, name, clan, age, str, dex, con, int, wis, char):
+class NtoCharacter():
+    def __init__(self, user_id, server_id, name, age, lvl, role, hitpoints, strength, dexterity, constitution, intelligence, wisdom, charisma, apperance):
+
+        self.user_id = user_id
+        self.server_id = server_id
 
         #characteristics
         self.name = name
         self.age = age
+        self.lvl = lvl
+        self.role = role
 
         #attributes
-        self.str = str
-        self.dex = dex
-        self.con = con
-        self.int = int
-        self.wis = wis
-        self.char = char
+        self.hitpoints = hitpoints
+        self.strength = strength
+        self.dexterity = dexterity
+        self.constitution = constitution
+        self.intelligence = intelligence
+        self.wisdom = wisdom
+        self.charisma = charisma
+        
+        #extra
+        self.apperance = apperance
+
+    def modifier_calc(self, attribute_value):
+        return (attribute_value - 10) // 2
+
         
