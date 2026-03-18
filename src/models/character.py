@@ -1,6 +1,6 @@
 
 class Character():
-    def __init__ (self, name, especialization, origin):
+    def __init__ (self, name, specialization, origin):
         self.name = name
-        self.especialization = especialization
+        self.specialization = specialization
         self.origin = origin
